@@ -49,6 +49,17 @@ function App() {
           <li key={note.id}>
             {note.text}
             {note.url && <a href={note.url}> (attachment)</a>}
+            <button
+              onClick={() => {
+                fetch(`/api/notes/${note.id}`, { method: "DELETE" }).then(
+                  () => {
+                    load();
+                  },
+                );
+              }}
+            >
+              Delete
+            </button>
           </li>
         ))}
       </ul>
